@@ -1,3 +1,5 @@
+![ESCC](screenshots/cover.avif)
+
 <h1 style="font-family: Arial, sans-serif; font-size: 36px; color: #2563EB; display: flex; align-items: center; border-bottom: 3px solid #2563EB; padding-bottom: 5px;">
     <img src="screenshots/logo.svg" alt="ESCC Hero" style="height: 55px; margin-right: 15px; object-fit: cover;">
     ESCC - ENSIA’s Sports & Culture Club
