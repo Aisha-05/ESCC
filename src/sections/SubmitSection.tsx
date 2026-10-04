@@ -32,6 +32,7 @@ interface SubmitSectionProps {
     onSubmit: () => void;
     canSubmit: boolean;
     isSubmitting: boolean;
+    submissionError: string | null;
     hasApplied: boolean;
 }
 
@@ -42,6 +43,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
     onSubmit,
     canSubmit,
     isSubmitting,
+    submissionError,
     hasApplied,
 }) => {
     const [mainOpen, setMainOpen] = useState(false);
@@ -204,6 +206,14 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
             </div>
             {hasApplied && (
                 <p className="text-gray-400 font-semibold mb-4">You already applied!</p>
+            )}
+            {submissionError && (
+                <p
+                    className="mb-4 text-center font-semibold text-red-600"
+                    role="alert"
+                >
+                    {submissionError}
+                </p>
             )}
             <Button
                 variant="primary"

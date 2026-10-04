@@ -10,7 +10,7 @@ import {
 } from "react";
 
 import type { CarouselApi } from "@/components/ui/carousel";
-import { postData } from "@/server/post";
+import { getRegistrationStatus, postData } from "@/server/post";
 import type {
   DepartmentPreferences,
   MainFormData,
@@ -49,6 +49,7 @@ type UseRegisterReturn = {
   disableNext: boolean;
   canSubmit: boolean;
   isSubmitting: boolean;
+  submissionError: string | null;
   hasApplied: boolean;
   handleSubmit: () => Promise<void>;
 };
@@ -59,6 +60,7 @@ export function useRegister(): UseRegisterReturn {
   const [isRegistered, setIsRegistered] = useState<boolean | null>(null);
   const [allowed, setAllowed] = useState<StepKey[]>(["main"]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
   const [hasApplied, setHasApplied] = useState(false);
 
   const [mainData, setMainDataState] = useState<MainFormData>({
@@ -84,8 +86,17 @@ export function useRegister(): UseRegisterReturn {
   });
 
   useEffect(() => {
-    const cookieExists = document.cookie.includes("registered=true");
-    setIsRegistered(cookieExists);
+    let mounted = true;
+
+    void getRegistrationStatus().then((registered) => {
+      if (mounted) {
+        setIsRegistered(registered);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -187,12 +198,13 @@ export function useRegister(): UseRegisterReturn {
     if (!canSubmit) return;
     try {
       setIsSubmitting(true);
+      setSubmissionError(null);
       await postData({ mainData, departmentData, motivationData });
-      document.cookie = "registered=true; path=/; max-age=31536000";
       setHasApplied(true);
       window.location.reload();
     } catch (error) {
       console.error(error);
+      setSubmissionError("We couldn't submit your application. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -286,6 +298,7 @@ export function useRegister(): UseRegisterReturn {
     disableNext,
     canSubmit,
     isSubmitting,
+    submissionError,
     hasApplied,
     handleSubmit,
   };

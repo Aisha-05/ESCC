@@ -5,7 +5,7 @@ function doPost(e) {
   if (e.postData.contents) {
     const data = JSON.parse(e.postData.contents);
 
-    const timestamp = newDate().toLocaleString("en-CA", { month: "short", day: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+    const timestamp = new Date().toLocaleString("en-CA", { month: "short", day: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
     sheet.appendRow([timestamp, 
       data.firstName, 
       data.lastName, 

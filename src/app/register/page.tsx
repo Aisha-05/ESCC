@@ -34,6 +34,7 @@ export default function RegisterPage() {
         disableNext,
         canSubmit,
         isSubmitting,
+        submissionError,
         hasApplied,
         handleSubmit,
     } = useRegister();
@@ -82,6 +83,7 @@ export default function RegisterPage() {
                                                 }}
                                                 canSubmit={canSubmit}
                                                 isSubmitting={isSubmitting}
+                                                submissionError={submissionError}
                                                 hasApplied={hasApplied}
                                             />
                                         )}
