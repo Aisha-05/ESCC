@@ -27,7 +27,16 @@
 .registration-ambient { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 10% 45%, #3323a00c, transparent 50%), radial-gradient(ellipse at 100% 100%, #08ccfa12, transparent 50%); }
 .registration-topbar { max-width: 800px; margin: 0 auto; min-height: 106px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .registration-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--registration-blue); }
-.registration-brand > span { font-size: 26px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+.registration-brand > span {
+  background: linear-gradient(110deg, var(--secondary), var(--tertiary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
 .registration-brand > span > span { display: block; margin-top: 5px; font-size: 9px; font-weight: 500; letter-spacing: 1.7px; color: #75738f; }
 .registration-home-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-size: 13px; color: #615e7e; text-decoration: none; }
 .registration-home-link:hover { color: var(--registration-blue); }
@@ -132,6 +141,154 @@
 .registration-success > p:not(.registration-eyebrow) { max-width: 420px; margin: 0 auto 30px; font-size: 14px; color: var(--registration-muted); line-height: 1.8; }
 .registration-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 @keyframes registration-spin { to { transform: rotate(360deg); } }
+
+/* Keep the registration flow visually aligned with the homepage palette. */
+.registration-page {
+  --registration-ink: var(--brand2-deep-navy);
+  --registration-muted: var(--brand2-secondary-text);
+  --registration-line: var(--brand2-border);
+  --registration-blue: var(--primary);
+  --registration-mint: var(--tertiary);
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--secondary) 13%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--brand2-pale-ice), var(--brand2-white));
+}
+
+.registration-ambient {
+  background:
+    radial-gradient(ellipse at 8% 38%, color-mix(in srgb, var(--primary) 13%, transparent), transparent 48%),
+    radial-gradient(ellipse at 100% 92%, color-mix(in srgb, var(--secondary) 16%, transparent), transparent 50%);
+}
+
+.registration-brand,
+.registration-home-link:hover,
+.registration-stepper li[data-active="true"] button,
+.registration-review-heading button:hover {
+  color: var(--primary);
+}
+
+.registration-brand > span > span,
+.registration-home-link,
+.registration-footer-note,
+.registration-page-footer {
+  color: var(--brand2-secondary-text);
+}
+
+.registration-card,
+.registration-success {
+  border-color: color-mix(in srgb, var(--secondary) 18%, var(--brand2-border));
+  box-shadow: 0 18px 55px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.registration-stepper li:not(:last-child)::after {
+  background: color-mix(in srgb, var(--secondary) 20%, var(--registration-line));
+}
+
+.registration-stepper li[data-complete="true"]::after {
+  background: color-mix(in srgb, var(--tertiary) 70%, var(--secondary));
+}
+
+.registration-step-number {
+  background: var(--brand2-ice-blue);
+  border-color: color-mix(in srgb, var(--secondary) 22%, var(--brand2-border));
+}
+
+.registration-stepper li[data-complete="true"] .registration-step-number {
+  background: color-mix(in srgb, var(--tertiary) 18%, white);
+  border-color: color-mix(in srgb, var(--tertiary) 60%, white);
+  color: var(--primary);
+}
+
+.registration-stepper li[data-active="true"] .registration-step-number {
+  background: linear-gradient(110deg, var(--primary), var(--secondary));
+  border-color: transparent;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--secondary) 18%, transparent);
+}
+
+.registration-stepper button:not(:disabled):hover .registration-step-number {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--secondary) 18%, transparent);
+}
+
+.registration-field label {
+  color: var(--brand2-primary-text);
+}
+
+.registration-field :is(input, select, textarea) {
+  border-color: var(--brand2-border);
+  background: color-mix(in srgb, var(--brand2-pale-ice) 75%, white);
+}
+
+.registration-field :is(input, select, textarea):hover {
+  border-color: color-mix(in srgb, var(--secondary) 48%, var(--brand2-border));
+}
+
+.registration-field :is(input, select, textarea):focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 18%, transparent);
+}
+
+.registration-preference-number {
+  background: color-mix(in srgb, var(--secondary) 12%, white);
+  color: var(--primary);
+}
+
+.registration-note {
+  background: color-mix(in srgb, var(--secondary) 8%, white);
+  color: var(--brand2-secondary-text);
+  border: 1px solid color-mix(in srgb, var(--secondary) 16%, transparent);
+}
+
+.registration-motivation,
+.registration-review-details,
+.registration-review-departments {
+  border-color: var(--registration-line);
+}
+
+.registration-review-details {
+  background: var(--brand2-pale-ice);
+}
+
+.registration-motivation summary,
+.registration-motivation summary strong {
+  color: var(--brand2-primary-text);
+}
+
+.registration-form-footer {
+  border-top-color: color-mix(in srgb, var(--secondary) 18%, var(--registration-line));
+  background: color-mix(in srgb, white 92%, var(--brand2-pale-ice));
+}
+
+.registration-button-primary {
+  color: var(--primary);
+  background: linear-gradient(110deg, var(--tertiary), var(--secondary));
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--secondary) 24%, transparent);
+}
+
+.registration-button-primary:not(:disabled):hover {
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--secondary) 34%, transparent);
+}
+
+.registration-button-back {
+  color: var(--primary);
+}
+
+.registration-error {
+  border-color: color-mix(in srgb, #dc6578 35%, white);
+  background: color-mix(in srgb, #fff7f8 88%, var(--brand2-pale-ice));
+}
+
+.registration-success-icon {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--tertiary) 22%, white);
+}
+
+.registration-success h1 {
+  color: var(--primary);
+}
+
+.registration-success h1 span {
+  color: var(--secondary);
+}
 
 @media (max-width: 1100px) {
   .registration-page { padding-right: 24px; padding-left: 24px; }

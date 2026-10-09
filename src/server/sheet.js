@@ -13,6 +13,7 @@ function doPost(e) {
       data.phone, 
       data.school, 
       data.year, 
+      data.instagram || "",
       data.department1, 
       data.choice1.work, 
       data.choice1.experience, 
