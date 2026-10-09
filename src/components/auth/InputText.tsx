@@ -1,46 +1,30 @@
 "use client";
-import { motion } from "motion/react";
-import { useState } from "react";
 
-export default function Input({
-  placeholder,
-  value,
-  onChange,
-  verifier,
-  necessary,
-}: {
-  placeholder: string;
+import { useId, useState, type InputHTMLAttributes } from "react";
+
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value"> & {
+  label: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   verifier?: (value: string) => boolean;
   necessary?: boolean;
-}) {
-  const [focused, setFocused] = useState(false);
-  const isValid = (verifier ? verifier(value) : true) && !(necessary && value.trim() === '');
+  showErrors?: boolean;
+  errorMessage?: string;
+  hint?: string;
+};
+
+export default function Input({ label, value, verifier, necessary, showErrors = false, errorMessage = "Please complete this field.", hint, id, onBlur, ...props }: InputProps) {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const [touched, setTouched] = useState(false);
+  const valid = (!necessary || value.trim().length > 0) && (!verifier || verifier(value));
+  const invalid = !valid && (touched || showErrors);
+  const description = invalid ? errorMessage : hint;
 
   return (
-    <motion.div
-      layout
-      transition={{ duration: 0.1, ease: "easeInOut" }}
-      className="w-full relative"
-    >
-      <label
-        className={`absolute left-1 transition-all duration-200 pointer-events-none truncate text-nowrap
-          ${value || focused ? "top-0 text-[0.5rem] md:text-xs" : "top-5 text-sm md:text-base"}
-          ${isValid ? "text-secondary" : "text-red-500"} ${!isValid && !focused ? "text-gray-400" : ""}
-        `}
-      >
-        {placeholder}{necessary ? '*' : ''}
-      </label>
-      <input
-        type="text"
-        className="p-2 pt-4 rounded w-full focus:outline-none focus:ring-0 focus:ring-secondary"
-        value={value}
-        onChange={onChange}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-      />
-      <div className={`h-[2px] ${isValid ? "bg-gradient-to-r from-tertiary to-secondary" : "bg-red-500"}`}></div>
-    </motion.div>
+    <div className="registration-field">
+      <label htmlFor={inputId}>{label} {necessary ? <span className="registration-required" aria-hidden="true">*</span> : <span className="registration-optional">optional</span>}</label>
+      <input {...props} id={inputId} value={value} required={necessary} aria-invalid={invalid} aria-describedby={description ? `${inputId}-description` : undefined} onBlur={(event) => { setTouched(true); onBlur?.(event); }} />
+      {description && <span id={`${inputId}-description`} className={invalid ? "registration-field-error" : "registration-field-hint"}>{description}</span>}
+    </div>
   );
 }

@@ -1,119 +1,31 @@
-import { useState, useEffect, useMemo } from "react";
+"use client";
 
-import { motion } from "motion/react";
-
+import { Info } from "lucide-react";
 import InputSelect from "@/components/auth/InputSelect";
 import type { DepartmentPreferences } from "@/types/registration";
 
-const departmentsList = [
-    "Sports",
-    "Culture",
-    "Multimedia",
-    "Design",
-    "Relex",
-    "Dev",
-    "Marketing",
-];
+const departments = ["Sports", "Culture", "Multimedia", "Design", "Relex", "Dev", "Marketing"];
+const choices = [
+  { key: "department1", label: "First choice", caption: "The team you’re most excited to join." },
+  { key: "department2", label: "Second choice", caption: "Another place you’d love to contribute." },
+  { key: "department3", label: "Third choice", caption: "One more team that sparks your interest." },
+] as const;
 
-export default function DepartmentSelection({
-    setDepartmentData,
-}: {
-    setDepartmentData?: (data: DepartmentPreferences) => void;
-}) {
-    const [department1, setDepartment1] = useState("");
-    const [department2, setDepartment2] = useState("");
-    const [department3, setDepartment3] = useState("");
+type DepartmentSelectionProps = { departmentData: DepartmentPreferences; setDepartmentData: (data: DepartmentPreferences) => void; showErrors: boolean };
 
-    // InputSelect expects options in the shape { title: string; value: string }
-    const departmentOptions = useMemo(
-        () => departmentsList.map((d) => ({ title: d, value: d })),
-        []
-    );
-
-    const department1Options = useMemo(
-        () =>
-            departmentOptions.filter(
-                (option) =>
-                    option.value === department1 ||
-                    (option.value !== department2 && option.value !== department3)
-            ),
-        [department1, department2, department3, departmentOptions]
-    );
-
-    const department2Options = useMemo(
-        () =>
-            departmentOptions.filter(
-                (option) =>
-                    option.value === department2 ||
-                    (option.value !== department1 && option.value !== department3)
-            ),
-        [departmentOptions, department1, department2, department3]
-    );
-
-    const department3Options = useMemo(
-        () =>
-            departmentOptions.filter(
-                (option) =>
-                    option.value === department3 ||
-                    (option.value !== department1 && option.value !== department2)
-            ),
-        [departmentOptions, department1, department2, department3]
-    );
-
-    useEffect(() => {
-        if (department1 && department1 === department2) {
-            setDepartment2("");
-        }
-
-        if (department1 && department1 === department3) {
-            setDepartment3("");
-        }
-
-        if (department2 && department2 === department3) {
-            setDepartment3("");
-        }
-    }, [department1, department2, department3]);
-
-    useEffect(() => {
-        setDepartmentData?.({ department1, department2, department3 });
-    }, [department1, department2, department3, setDepartmentData]);
-
-
-    return (
-        <motion.section
-            layout
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="bg-white h-max z-10 flex flex-col items-center w-[70vw] "
-        >
-
-            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-green-400 text-center mb-8">
-                Department Selection
-            </h3>
-
-            <div className="flex flex-col gap-4 w-full max-w-md">
-
-                <InputSelect
-                    value={department1}
-                    onChange={(e) => setDepartment1(e.target.value)}
-                    options={department1Options}
-                    placeholder="Select your first choice"
-                />
-                <InputSelect
-                    value={department2}
-                    onChange={(e) => setDepartment2(e.target.value)}
-                    options={department2Options}
-                    placeholder="Select your second choice"
-                />
-                <InputSelect
-                    value={department3}
-                    onChange={(e) => setDepartment3(e.target.value)}
-                    options={department3Options}
-                    placeholder="Select your third choice"
-                />
-
-            </div>
-
-
-        </motion.section>
-    );
+export default function DepartmentSelection({ departmentData, setDepartmentData, showErrors }: DepartmentSelectionProps) {
+  return (
+    <div className="registration-departments">
+      {choices.map((choice, index) => (
+        <div className="registration-department-choice" key={choice.key}>
+          <span className="registration-preference-number" aria-hidden="true">0{index + 1}</span>
+          <div>
+            <InputSelect label={choice.label} name={choice.key} value={departmentData[choice.key]} onChange={(e) => setDepartmentData({ ...departmentData, [choice.key]: e.target.value })} options={departments.filter((department) => department === departmentData[choice.key] || !Object.values(departmentData).includes(department)).map((department) => ({ title: department, value: department }))} placeholder="Choose a department" required showErrors={showErrors} />
+            <p className="registration-field-hint">{choice.caption}</p>
+          </div>
+        </div>
+      ))}
+      <div className="registration-note"><Info size={18} aria-hidden="true" /><p>Put your favourite first. Each department can only be selected once.</p></div>
+    </div>
+  );
 }
