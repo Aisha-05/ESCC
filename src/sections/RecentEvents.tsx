@@ -14,7 +14,7 @@ export default function RecentEvents() {
       <ESCC />
 
       <AOS as="h2" animation="fade-up" delay={100} className="z-20">
-        <h2 className="z-20">Latest Events</h2>
+        Latest Events
       </AOS>
 
       <AOS as="div" animation="fade-up" delay={180} className="container mx-auto lg:h-[70vh] w-full">

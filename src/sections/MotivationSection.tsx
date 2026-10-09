@@ -1,46 +1,38 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import { ChevronDown } from "lucide-react";
 import Input from "@/components/auth/InputText";
-import { motion } from "motion/react";
+import InputTextarea from "@/components/auth/InputTextarea";
+import type { DepartmentPreferences, MotivationEntry, MotivationFormData } from "@/types/registration";
 
-export default function MotivationSection({ setMotivationData }: { setMotivationData?: (data: { choice1: { work: string, experience: string, expectations: string }, choice2: { work: string, experience: string, expectations: string }, choice3: { work: string, experience: string, expectations: string } }) => void }) {
-    const [choice1, setChoice1] = useState({ work: "", experience: "", expectations: "" });
-    const [choice2, setChoice2] = useState({ work: "", experience: "", expectations: "" });
-    const [choice3, setChoice3] = useState({ work: "", experience: "", expectations: "" });
+const choices = [
+  { key: "choice1", department: "department1", label: "First choice", required: true },
+  { key: "choice2", department: "department2", label: "Second choice", required: false },
+  { key: "choice3", department: "department3", label: "Third choice", required: false },
+] as const;
 
-    useEffect(() => {
-        setMotivationData?.({ choice1, choice2, choice3 });
-    }, [choice1, choice2, choice3, setMotivationData]);
+type MotivationSectionProps = { motivationData: MotivationFormData; departmentData: DepartmentPreferences; setMotivationData: (data: MotivationFormData) => void; showErrors: boolean };
 
-    return (
-        <motion.section
-            layout
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="bg-white z-10 col full gap-4 w-full h-screen max-h-screen md:max-h-160 overflow-y-auto md:px-24 px-8 "
-        >
-            <div>
-                <h4 className="colored font-bold text-2xl md:text-4xl mb-8 mt-6 text-nowrap">First choice motivation</h4>
-                <div className="col gap-4">
-                    <Input placeholder="Describe your experience if any" value={choice1.experience} onChange={(e) => setChoice1({ ...choice1, experience: e.target.value })} />
-                    <Input placeholder="Link to your previous work" value={choice1.work} onChange={(e) => setChoice1({ ...choice1, work: e.target.value })} />
-                    <Input placeholder="What are your expectations from this department?" value={choice1.expectations} onChange={(e) => setChoice1({ ...choice1, expectations: e.target.value })} necessary />
-                </div>
-            </div>
-            <div>
-                <h4 className="colored font-bold text-2xl md:text-4xl my-8 text-nowrap">Second choice motivation</h4>
-                <div className="col gap-4">
-                    <Input placeholder="Describe your experience if any" value={choice2.experience} onChange={(e) => setChoice2({ ...choice2, experience: e.target.value })} />
-                    <Input placeholder="Link to your previous work" value={choice2.work} onChange={(e) => setChoice2({ ...choice2, work: e.target.value })} />
-                    <Input placeholder="What are your expectations from this department?" value={choice2.expectations} onChange={(e) => setChoice2({ ...choice2, expectations: e.target.value })} />
-                </div>
-            </div>
-            <div>
-                <h4 className="colored font-bold text-2xl md:text-4xl my-8 text-nowrap">Third choice motivation</h4>
-                <div className="col gap-4">
-                    <Input placeholder="Describe your experience if any" value={choice3.experience} onChange={(e) => setChoice3({ ...choice3, experience: e.target.value })} />
-                    <Input placeholder="Link to your previous work" value={choice3.work} onChange={(e) => setChoice3({ ...choice3, work: e.target.value })} />
-                    <Input placeholder="What are your expectations from this department?" value={choice3.expectations} onChange={(e) => setChoice3({ ...choice3, expectations: e.target.value })} />
-                </div>
-            </div>
-        </motion.section>
-    );
+export default function MotivationSection({ motivationData, departmentData, setMotivationData, showErrors }: MotivationSectionProps) {
+  const update = (choice: keyof MotivationFormData, field: keyof MotivationEntry, value: string) => setMotivationData({ ...motivationData, [choice]: { ...motivationData[choice], [field]: value } });
+  return (
+    <div className="registration-motivations">
+      {choices.map((choice, index) => (
+        <details className="registration-motivation" key={choice.key} open={index === 0 ? true : undefined}>
+          <summary>
+            <span className="registration-preference-number" aria-hidden="true">0{index + 1}</span>
+            <span><span className="registration-choice-label">{choice.label}</span><strong>{departmentData[choice.department]}</strong></span>
+            {!choice.required && <span className="registration-optional">optional</span>}
+            <ChevronDown size={18} aria-hidden="true" />
+          </summary>
+          <div className="registration-motivation-fields">
+            <InputTextarea label="What do you hope to gain or contribute?" name={`${choice.key}-expectations`} placeholder="Tell us what you’re looking forward to…" value={motivationData[choice.key].expectations} onChange={(e) => update(choice.key, "expectations", e.target.value)} required={choice.required} showErrors={showErrors} />
+            <InputTextarea label="Relevant experience" name={`${choice.key}-experience`} placeholder="Any projects, activities, or skills you’d like to share?" value={motivationData[choice.key].experience} onChange={(e) => update(choice.key, "experience", e.target.value)} />
+            <Input label="Link to your work" name={`${choice.key}-work`} placeholder="Portfolio, project, or social profile" inputMode="url" autoCapitalize="none" value={motivationData[choice.key].work} onChange={(e) => update(choice.key, "work", e.target.value)} />
+          </div>
+        </details>
+      ))}
+      <p className="registration-field-hint">No experience needed. Curiosity and a willingness to get involved are a great start.</p>
+    </div>
+  );
 }

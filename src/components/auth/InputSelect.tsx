@@ -1,42 +1,34 @@
 "use client";
 
-import { motion } from "motion/react";
-import type { ChangeEventHandler } from "react";
+import { ChevronDown } from "lucide-react";
+import { useId, useState, type SelectHTMLAttributes } from "react";
 
 type SelectOption = { title: string; value: string };
-type InputSelectProps = {
-    value: string;
-    onChange: ChangeEventHandler<HTMLSelectElement>;
-    options: SelectOption[];
-    placeholder?: string;
+type InputSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, "value"> & {
+  label: string;
+  value: string;
+  options: SelectOption[];
+  placeholder?: string;
+  showErrors?: boolean;
 };
 
-function InputSelect({ value, onChange, options, placeholder }: InputSelectProps) {
-    return (
-        <motion.div
-            layout
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="w-full"
-        >
-            <select
-                className="p-2 rounded border-none w-full focus:outline-none focus:ring-2 focus:ring-secondary cursor-pointer"
-                value={value}
-                onChange={onChange}
-            >
-                {placeholder && (
-                    <option value="" disabled hidden>
-                        {placeholder}
-                    </option>
-                )}
-                {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.title}
-                    </option>
-                ))}
-            </select>
-            <div className="h-[2px] bg-gradient-to-r from-tertiary to-secondary" />
-        </motion.div>
-    );
-}
+export default function InputSelect({ label, value, options, placeholder, showErrors, required, id, onBlur, ...props }: InputSelectProps) {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const [touched, setTouched] = useState(false);
+  const invalid = required && !value && (touched || showErrors);
 
-export default InputSelect;
+  return (
+    <div className="registration-field">
+      <label htmlFor={inputId}>{label} {required && <span className="registration-required" aria-hidden="true">*</span>}</label>
+      <div className="registration-select">
+        <select {...props} id={inputId} value={value} required={required} aria-invalid={!!invalid} aria-describedby={invalid ? `${inputId}-error` : undefined} onBlur={(event) => { setTouched(true); onBlur?.(event); }}>
+          {placeholder && <option value="" disabled>{placeholder}</option>}
+          {options.map((option) => <option key={option.value} value={option.value}>{option.title}</option>)}
+        </select>
+        <ChevronDown size={18} aria-hidden="true" />
+      </div>
+      {invalid && <span id={`${inputId}-error`} className="registration-field-error">Please select a department.</span>}
+    </div>
+  );
+}
