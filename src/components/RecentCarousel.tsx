@@ -72,6 +72,7 @@ export default function RecentCarousel() {
                 scrollTo={scrollTo}
                 current={current}
                 count={count}
+                hideArrowsOnMobile
             />
 
         </div>

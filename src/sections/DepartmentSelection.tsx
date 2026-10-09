@@ -6,13 +6,17 @@ import InputSelect from "@/components/auth/InputSelect";
 import type { DepartmentPreferences } from "@/types/registration";
 
 const departmentsList = [
+    "External Relations",
+    "Design",
+    "Marketing & Content",
+    "Multimedia",
+    "Production & Video",
+    "Planning",
+    "Logistics",
+    "HR",
+    "Technical Development",
     "Sports",
     "Culture",
-    "Multimedia",
-    "Design",
-    "Relex",
-    "Dev",
-    "Marketing",
 ];
 
 export default function DepartmentSelection({

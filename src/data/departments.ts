@@ -1,47 +1,104 @@
-export const departments = [
+export type Department = {
+  title: string;
+  description: string;
+  image?: string;
+  icon?: "handshake" | "planning" | "logistics";
+};
+
+export type DepartmentGroup = {
+  title: string;
+  departments: Department[];
+};
+
+export const departmentGroups: DepartmentGroup[] = [
   {
-    title: "Sports Department",
-    description: "Fosters physical fitness, teamwork, and competition through athletic programs and events.",
-    image: "/svg/icon/department/sport.svg",
+    title: "External Relations",
+    departments: [
+      {
+        title: "External Relations",
+        description:
+          "Builds partnerships and represents ESCC by connecting the club with students, organizations, and external partners.",
+        icon: "handshake",
+      },
+    ],
   },
   {
-    title: "Executive Team",
-    description: "Leads the organization, sets strategic direction, and ensures effective operations.",
-    image: "/svg/icon/department/executive.svg",
+    title: "Creative & Media",
+    departments: [
+      {
+        title: "Design",
+        description:
+          "Creates the visual identity of ESCC through thoughtful graphics, layouts, and creative direction.",
+        image: "/svg/icon/department/design.svg",
+      },
+      {
+        title: "Marketing & Content",
+        description:
+          "Plans campaigns and creates engaging content that shares ESCC's activities with the wider community.",
+        image: "/svg/icon/department/marketing.svg",
+      },
+      {
+        title: "Multimedia",
+        description:
+          "Turns ideas into engaging digital experiences using photography, visual storytelling, and multimedia production.",
+        image: "/svg/icon/department/multimedia.svg",
+      },
+      {
+        title: "Production & Video",
+        description:
+          "Plans, records, and edits video projects that capture the energy and stories of ESCC events.",
+        image: "/svg/icon/department/multimedia.svg",
+      },
+    ],
   },
   {
-    title: "Culture Department",
-    description: "Celebrates diversity and promotes cultural awareness through events and initiatives.",
-    image: "/svg/icon/department/culture.svg",
+    title: "Operations",
+    departments: [
+      {
+        title: "Planning",
+        description:
+          "Organizes timelines, priorities, and workflows to help every ESCC project run smoothly.",
+        icon: "planning",
+      },
+      {
+        title: "Logistics",
+        description:
+          "Coordinates resources, spaces, equipment, and practical details behind successful club activities.",
+        icon: "logistics",
+      },
+      {
+        title: "HR",
+        description:
+          "Supports members, strengthens collaboration, and helps build a welcoming and productive club culture.",
+        image: "/svg/icon/department/hr.svg",
+      },
+      {
+        title: "Technical Development",
+        description:
+          "Develops and maintains digital tools that improve ESCC's communication, organization, and online presence.",
+        image: "/svg/icon/department/dev.svg",
+      },
+    ],
   },
   {
-    title: "Multimedia Department",
-    description: "Explores digital storytelling and content creation via projects and workshops.",
-    image: "/svg/icon/department/multimedia.svg",
+    title: "Activities",
+    departments: [
+      {
+        title: "Sports",
+        description:
+          "Encourages teamwork and wellbeing through sporting activities, challenges, and inclusive competitions.",
+        image: "/svg/icon/department/sport.svg",
+      },
+      {
+        title: "Culture",
+        description:
+          "Celebrates creativity, heritage, and student expression through cultural events and shared experiences.",
+        image: "/svg/icon/department/culture.svg",
+      },
+    ],
   },
-  {
-    title: "Relex Department",
-    description: "Focuses on well-being and stress reduction with mindfulness and relaxation techniques.",
-    image: "/svg/icon/department/relex.svg",
-  },
-  {
-    title: "Design Department",
-    description: "Cultivates creativity in graphic design, visual arts, and interactive media.",
-    image: "/svg/icon/department/design.svg",
-  },
-  {
-    title: "Dev Department",
-    description: "Equips students with coding and software development skills through courses and projects.",
-    image: "/svg/icon/department/dev.svg",
-  },
-  {
-    title: "Marketing Department",
-    description: "Teaches marketing strategies, branding, and communication to promote events and initiatives.",
-    image: "/svg/icon/department/marketing.svg",
-  },
-  {
-    title: "HR Department",
-    description: "Focuses on recruitment, employee relations, and organizational development.",
-    image: "/svg/icon/department/hr.svg",
-  }
 ];
+
+export const departments = departmentGroups.flatMap(
+  (group) => group.departments,
+);

@@ -6,13 +6,13 @@ export default function AboutUs() {
   return (
     <AOS
       as="section"
-      className="w-screen h-full md:h-full overflow-hidden relative py-20"
+      className="brand2-light-section about-section w-screen min-h-[42rem] overflow-hidden relative py-16 md:min-h-[62rem] md:py-28"
       id="about"
       animation="fade-up"
       offset={180}
     >
       <div
-        className="h-[120vh] mx-auto w-screen grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-16 md:px-20 md:py-32 items-center justify-center"
+        className="relative z-10 mx-auto grid w-[min(1320px,94vw)] grid-cols-1 gap-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-20 items-center"
         id="aboutus"
       >
         <ESCC />
@@ -21,10 +21,10 @@ export default function AboutUs() {
           as="div"
           animation="fade-right"
           delay={120}
-          className="container relative center flex-col md:ml-20 gap-8 mx-auto"
+          className="relative flex flex-col items-start gap-5 mx-auto w-full min-w-0 md:max-w-2xl"
         >
-          <h2>About Us</h2>
-          <p className="w-80 font-lexend text-xl text-center md:text-left">
+          <h2 className="about-title text-left">About Us</h2>
+          <p className="about-copy max-w-xl font-lexend text-base md:text-lg text-left">
             ESCC creates a space where students can learn, connect, and grow
             beyond the classroom through sports, culture, and community spirit.
             Our mission is to inspire creativity, teamwork, and personal
@@ -32,9 +32,10 @@ export default function AboutUs() {
             passions through a variety of cultural events, scientific
             initiatives, and athletic activities.
           </p>
+          <div className="about-rule" />
         </AOS>
 
-        <AOS as="div" animation="fade-left" delay={180}>
+        <AOS as="div" animation="fade-left" delay={180} className="relative z-10 w-full min-w-0">
           <AboutUsCards />
         </AOS>
       </div>

@@ -9,6 +9,7 @@ type CarousalNavigationProps = {
     count: number;
     disablePrev?: boolean;
     disableNext?: boolean;
+    hideArrowsOnMobile?: boolean;
 };
 
 export default function CarousalNavigation({
@@ -20,6 +21,7 @@ export default function CarousalNavigation({
     count,
     disablePrev = false,
     disableNext = false,
+    hideArrowsOnMobile = false,
 }: CarousalNavigationProps) {
     return (
         <div className={`flex items-center justify-center space-x-6 z-10 ${className ?? ""}`}>
@@ -27,7 +29,7 @@ export default function CarousalNavigation({
             <button
                 type="button"
                 onClick={scrollPrev}
-                className={`click ${disablePrev ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`${hideArrowsOnMobile ? "hidden md:inline-flex" : "inline-flex"} click ${disablePrev ? "opacity-50 cursor-not-allowed" : ""}`}
                 aria-label="Previous slide"
                 aria-disabled={disablePrev}
                 disabled={disablePrev}
@@ -58,7 +60,7 @@ export default function CarousalNavigation({
             <button
                 type="button"
                 onClick={scrollNext}
-                className={`click ${disableNext ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`${hideArrowsOnMobile ? "hidden md:inline-flex" : "inline-flex"} click ${disableNext ? "opacity-50 cursor-not-allowed" : ""}`}
                 aria-label="Next slide"
                 aria-disabled={disableNext}
                 disabled={disableNext}

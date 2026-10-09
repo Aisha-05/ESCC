@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative w-screen h-[80vh] md:h-screen" id="home">
+    <section className="hero-brand2 relative w-screen h-[80vh] md:h-screen" id="home">
       <Image
         src="/image/misc/hero.png"
         alt="Hero Image"
@@ -15,7 +15,7 @@ export default function Hero() {
         className="object-cover absolute inset-0 blur-xs overflow-hidden h-[96%] w-full"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-40" />
+      <div className="hero-brand2-overlay absolute inset-0 opacity-70" />
 
       <AOS
         as="div"
@@ -44,12 +44,12 @@ export default function Hero() {
 
         <AOS as="div" animation="fade-up" delay={200} className="grid grid-cols-2 w-max gap-6 z-30">
           <Link href="/register">
-            <Button className="w-40" variant="primary">
+            <Button className="brand2-cta w-40" variant="primary">
               Register
             </Button>
           </Link>
           <Link href="#recentevents">
-            <Button className="w-40" variant="outline">
+            <Button className="brand2-outline w-40" variant="outline">
               Explore
             </Button>
           </Link>
@@ -61,7 +61,7 @@ export default function Hero() {
         alt="Scroll Down"
         width={20}
         height={20}
-        className="lg:w-[25vw] md:w-[30vw] w-[35vw] absolute bottom-0 right-20 md:right-50 z-10 float-animation"
+        className="hero-brand2-logo lg:w-[25vw] md:w-[30vw] w-[35vw] absolute bottom-0 right-20 md:right-50 z-10 float-animation"
       />
 
       <Image
@@ -69,7 +69,7 @@ export default function Hero() {
         alt="Scroll Down"
         width={1920}
         height={1080}
-        className="w-full absolute bottom-0 z-20"
+        className="absolute bottom-0 z-20 block w-full border-0 outline-none"
       />
     </section>
   );

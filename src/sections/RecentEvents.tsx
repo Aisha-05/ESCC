@@ -6,7 +6,7 @@ export default function RecentEvents() {
   return (
     <AOS
       as="section"
-      className="relative overflow-hidden h-[80vh] w-screen md:h-[100vh] center col text-white lg:py-32 lg:px-20 md:mb-20"
+      className="relative overflow-hidden h-[80vh] w-screen md:h-[100vh] center col text-white lg:py-24 lg:px-20 md:mb-8"
       id="recentevents"
       animation="fade-up"
       offset={140}

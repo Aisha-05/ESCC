@@ -27,15 +27,15 @@ export default function AboutUsCards() {
   }, []);
 
   return (
-    <div className="container relative w-[50vw] md:max-w-[30vw] mx-auto h-40 md:h-0">
-      <Float delay={0} speed={6}>
-        <Image src="/image/misc/card1.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="rounded-xl absolute left-0 bottom-0 z-3" />
+    <div className="relative mx-auto grid w-full max-w-[28rem] grid-cols-2 items-center gap-4 pt-4 md:block md:h-[28rem] md:max-w-[32rem]">
+      <Float delay={0} speed={6} className="relative z-3 md:absolute md:bottom-0 md:left-0">
+        <Image src="/image/misc/card1.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="w-full rounded-xl object-contain md:w-auto" />
       </Float>
-      <Float delay={1} speed={6}>
-        <Image src="/image/misc/card2.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="rounded-xl absolute -right-4 top-0 -translate-y-1/2 z-2" />
+      <Float delay={1} speed={6} className="relative z-2 md:absolute md:right-0 md:top-0">
+        <Image src="/image/misc/card2.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="w-full rounded-xl object-contain md:w-auto" />
       </Float>
-      <Float delay={2} speed={6}>
-        <Image src="/image/misc/card3.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="rounded-xl absolute left-0 top-0 z-1" />
+      <Float delay={2} speed={6} className="relative z-1 col-span-2 mx-auto w-1/2 md:absolute md:left-0 md:top-16 md:w-auto">
+        <Image src="/image/misc/card3.svg" alt="About Us Image" width={imageSize.width} height={imageSize.height} className="w-full rounded-xl object-contain md:w-auto" />
       </Float>
     </div>
   );

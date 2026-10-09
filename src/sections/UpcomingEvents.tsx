@@ -6,7 +6,7 @@ import AOS from "@/components/AOS";
 
 export default function UpcomingEvents() {
   return (
-    <section className="relative bg-primary/10 screen py-12 center col" id="events">
+    <section className="relative bg-primary/10 screen py-8 md:py-10 center col" id="events">
       <Image
         src="/svg/misc/upcoming-light-2.svg"
         alt="Upcoming Events"

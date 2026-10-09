@@ -1,92 +1,109 @@
 export const managers = [
 	{
-		name: 'Aymen Seray',
-		title: 'President',
-		image: '/image/managers/AYMEN SERAY.avif',
-	},
-	{
-		name: 'Rosa Aouiguer',
-		title: 'Vice President',
-		image: '/image/managers/ROSA AOUIGUER.avif',
-	},
-	{
 		name: 'Zyad Kherraf',
-		title: 'General Secretary',
+		title: 'President',
 		image: '/image/managers/ZYAD KHERRAF.avif',
 	},
 	{
-		name: 'Ramy Guettal',
+		name: 'Amina Gadiri',
+		title: 'Vice President',
+		image: '/image/managers/AMINA GADIRI.avif',
+	},
+	{
+		name: 'Manel Bouchera Debab',
 		title: 'Marketing Manager',
 		image: '/image/managers/RAMY GUETTAL.avif',
 	},
 	{
-		name: 'Ayoub Saci',
-		title: 'Sports Manager',
-		image: '/image/managers/AYOUB SACI.avif',
-	},
-	{
-		name: 'Amina Gadiri',
-		title: 'Sports Co-manager',
-		image: '/image/managers/AMINA GADIRI.avif',
-	},
-	{
 		name: 'Randa Markhoufa',
-		title: 'Culture Manager',
+		title: 'Culture Activies Manager',
 		image: '/image/managers/RANDA MARKHOUFA.avif',
 	},
 	{
 		name: 'El Mouataz FERHAT',
-		title: 'Multimedia Manager',
+		title: 'Production Manager',
 		image: '/image/managers/EL MOUATAZ BELLAH FERHAT.avif',
 	},
 	{
-		name: 'Widjdane Chouali',
-		title: 'Multimedia Co-Manager',
-		image: '/image/managers/WIDJDANE CHOUALI.avif',
+		name: 'Benchine Nabil',
+		title: 'Production Manager',
+		image: '/image/managers/EL MOUATAZ BELLAH FERHAT.avif',
 	},
 	{
-		name: 'Oumnia Gouasmia',
-		title: 'Multimedia Co-Manager',
-		image: '/image/managers/OUMNIA GOUASMIA.avif',
-	},
-	{
-		name: 'Nour Tliba',
+		name: 'Alaa Bensaid',
 		title: 'Relex Manager',
 		image: '/image/managers/NOUR TLIBA.avif',
 	},
 	{
 		name: 'Alia Tliba',
-		title: 'Relex Co-manager',
+		title: 'Planning Manager',
 		image: '/image/managers/ALIA TLIBA.avif',
 	},
-	{
-		name: 'Manel Ait SAID',
-		title: 'Design Manager',
-		image: '/image/managers/MANEL AIT SAID.avif',
-	},
-	{
-		name: 'Meriem Ouadfel',
-		title: 'Logistics Manager',
-		image: '/image/managers/MERIEM OUADFEL.avif',
-	},
-	{
+		{
 		name: 'Chaima Taberkokt',
 		title: 'Planning Manager',
 		image: '/image/managers/CHAIMA TABERKOKT.avif',
 	},
 	{
+		name: 'Hadjer Benhamou',
+		title: 'Design Manager',
+		image: '/image/managers/MANEL AIT SAID.avif',
+	},
+	//logistic
+	{
+		name: 'Amanda Ines Mameri',
+		title: 'Logistics Manager',
+		image: '/image/managers/MERIEM OUADFEL.avif',
+	},
+	{
+		name: 'Dagheri Ahmed Djaber',
+		title: 'Logistics Manager',
+		image: '/image/managers/MERIEM OUADFEL.avif',
+	},	
+
+	{
 		name: 'Youssra Sahraoui',
-		title: 'HR Co-manager',
+		title: 'Human Resources Manager',
+		image: '/image/managers/YOUSSRA SAHRAOUI.avif',
+	},
+		{
+		name: 'Aya Ismahane Kharcha',
+		title: 'Human Resources Manager',
 		image: '/image/managers/YOUSSRA SAHRAOUI.avif',
 	},
 	{
-		name: 'Meriem Ghorab',
-		title: 'HR Co-manager',
+		name: 'Chouali Widjdane',
+		title: 'Media Manager',
 		image: '/image/managers/MERIEM GHORAB.avif',
 	},
 	{
-		name: 'Mohaned Manaa',
+		name: 'Salsabil Laib',
+		title: 'Live Coverage Manager',
+		image: '/image/managers/MERIEM GHORAB.avif',
+	},
+	{
+		name: 'Salhi Fadoua',
+		title: 'Posting Manager',
+		image: '/image/managers/MERIEM GHORAB.avif',
+	},
+	{
+		name: 'Hamadi Mohammed',
 		title: 'Dev Manager',
+		image: '/image/managers/MOHANED MANAA.avif',
+	},
+	{
+		name: 'Aisha Djahara',
+		title: 'Dev Manager',
+		image: '/image/managers/MOHANED MANAA.avif',
+	},
+	{
+		name: 'Ouserir Mohamed Amine',
+		title: 'Sport Activities Manager',
+		image: '/image/managers/MOHANED MANAA.avif',
+	},
+	{
+		name: 'Zakaria Ammar',
+		title: 'Sport Activities Manager',
 		image: '/image/managers/MOHANED MANAA.avif',
 	},
 ];

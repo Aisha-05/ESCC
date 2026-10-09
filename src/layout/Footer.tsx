@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-screen col xl:h-[calc(40vh)] relative p-4 bg-gradient-to-r from-primary via-secondary to-primary text-white text-center pt-4 md:pt-20 xl:pt-40 md:px-40 mx-auto center overflow-hidden">
+    <footer className="footer-brand-card w-screen col xl:h-[calc(40vh)] relative p-4 text-white text-center pt-4 md:pt-20 xl:pt-40 md:px-40 mx-auto center overflow-hidden">
 
-      <Image src="/svg/misc/footer-wave.svg" alt="Scroll Down" width={1920} height={1080} className="w-full absolute md:-top-10 -top-2 z-20" />
+      <Image src="/svg/misc/footer-wave.svg" alt="Scroll Down" width={1920} height={1080} className="absolute z-20 block w-full border-0 outline-none md:-top-10 -top-2" />
 
       <div className="container mx-auto grid md:gap-0 md:grid-cols-2 h-full z-30 ">
 

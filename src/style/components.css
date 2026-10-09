@@ -7,6 +7,175 @@
   cursor: pointer;
 }
 
+.brand2-navbar {
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  border-bottom: 1px solid color-mix(in srgb, var(--tertiary) 35%, transparent);
+  color: var(--brand2-white);
+}
+
+.brand2-logo {
+  background: var(--brand2-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.brand2-navbar .nav-item {
+  color: var(--brand2-white);
+}
+
+.brand2-navbar .nav-item:hover,
+.brand2-navbar .nav-item[aria-current="page"] {
+  color: var(--brand2-fresh-mint);
+}
+
+.brand2-navbar .nav-item::after {
+  background: var(--brand2-electric-cyan);
+}
+
+.brand2-mobile-drawer {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  color: var(--brand2-white);
+  border-left: 1px solid color-mix(in srgb, var(--brand2-electric-cyan) 22%, transparent);
+}
+
+.brand2-mobile-item {
+  color: var(--brand2-white);
+  background: transparent;
+}
+
+.brand2-mobile-active {
+  color: var(--brand2-white);
+  background: transparent;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--primary) 38%, transparent);
+}
+
+.brand2-mobile-link {
+  font-family: var(--font-lexend);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.brand2-mobile-link:hover,
+.brand2-mobile-link:focus-visible {
+  background: transparent;
+  color: var(--brand2-white);
+}
+
+.brand2-light-section {
+  background: var(--brand2-pale-ice);
+  color: var(--brand2-primary-text);
+}
+
+.brand2-mobile-cta {
+  width: 100%;
+  min-height: 3.25rem;
+  border-radius: 0;
+  font-size: 1.125rem;
+}
+
+.about-section {
+  min-height: 0;
+}
+
+.about-title {
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 1;
+}
+
+.about-eyebrow {
+  color: var(--secondary-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.about-copy {
+  color: var(--brand2-secondary-text);
+  line-height: 1.8;
+}
+
+.about-rule {
+  width: 5rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--tertiary));
+}
+
+.brand2-primary-button,
+.brand2-cta {
+  background: linear-gradient(180deg, var(--tertiary), var(--secondary)) !important;
+  color: var(--primary) !important;
+  border: 1px solid color-mix(in srgb, var(--brand2-white) 35%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--brand2-electric-cyan) 22%, transparent);
+}
+
+.brand2-primary-button:hover,
+.brand2-cta:hover {
+  filter: saturate(1.1) brightness(1.03);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--brand2-electric-cyan) 30%, transparent);
+}
+
+.brand2-mobile-cta {
+  width: 100%;
+  min-height: 3.25rem;
+  border-radius: 1rem;
+  font-family: var(--font-lexend);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.brand2-outline-button,
+.brand2-outline {
+  border-color: var(--tertiary) !important;
+  color: var(--brand2-white) !important;
+  background: color-mix(in srgb, var(--brand2-deep-navy) 24%, transparent);
+  border-width: 1px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand2-white) 10%, transparent);
+}
+
+.brand2-outline-button:hover,
+.brand2-outline:hover {
+  background: color-mix(in srgb, var(--brand2-electric-cyan) 18%, transparent) !important;
+  transform: translateY(-2px);
+}
+
+.hero-brand2-overlay {
+  background:
+    linear-gradient(110deg, color-mix(in srgb, var(--brand2-deep-navy) 84%, transparent), transparent 58%),
+    var(--brand2-gradient);
+}
+
+.footer-brand-card {
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  border: 1px solid color-mix(in srgb, var(--tertiary) 30%, transparent);
+  overflow: hidden;
+  box-shadow: 0 16px 32px color-mix(in srgb, var(--primary) 22%, transparent);
+  transition: box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.group:hover .footer-brand-card {
+  border-color: color-mix(in srgb, var(--tertiary) 70%, transparent);
+  box-shadow: 0 22px 40px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.footer-brand-card-button {
+  background: color-mix(in srgb, var(--secondary) 72%, var(--primary)) !important;
+  border: 1px solid color-mix(in srgb, var(--tertiary) 60%, transparent) !important;
+  color: var(--brand2-white) !important;
+  min-height: 2.75rem;
+  padding-inline: 1rem !important;
+}
+
+.footer-brand-card-button:hover {
+  background: linear-gradient(180deg, var(--tertiary), var(--secondary)) !important;
+  color: var(--primary) !important;
+}
+
 .nav-item {
   position: relative;
   flex: 0 0 auto;

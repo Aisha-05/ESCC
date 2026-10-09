@@ -40,7 +40,7 @@ html {
   --color-foreground: var(--foreground);
 
   --font-lexend: 'Lexend Deca', sans-serif;
-  --font-permanent: 'Permanent Marker', cursive;
+  --font-permanent: 'Lexend Deca', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,8 +86,10 @@ section {
 } */
 h2 {
   font-size: 6rem;
-  font-family: var(--font-permanent);
-  color: black;
+  font-family: var(--font-lexend);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--brand2-deep-navy);
   text-align: center;
 }
 
@@ -114,4 +116,21 @@ h2 {
 
 Image{
   user-select: none;
+}
+
+/* Logo-derived palette for the new visual direction. */
+:root {
+  --brand2-electric-cyan: #00C9FF;
+  --brand2-fresh-mint: #92FE9D;
+  --brand2-deep-navy: #071A2B;
+  --brand2-midnight-blue: #0D2940;
+  --brand2-blue-slate: #183B52;
+  --brand2-pale-ice: #F4FDFF;
+  --brand2-ice-blue: #E8F9FF;
+  --brand2-soft-mint: #EDFFF0;
+  --brand2-primary-text: #10212E;
+  --brand2-secondary-text: #5B6B76;
+  --brand2-border: #D8E5EA;
+  --brand2-white: #FFFFFF;
+  --brand2-gradient: linear-gradient(110deg, var(--brand2-electric-cyan), var(--brand2-fresh-mint));
 }

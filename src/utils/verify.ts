@@ -1,4 +1,16 @@
-const validDepartments = ['Sports', 'Culture', 'Multimedia', 'Design', 'Relex', 'Dev', 'Marketing'];
+const validDepartments = [
+	'External Relations',
+	'Design',
+	'Marketing & Content',
+	'Multimedia',
+	'Production & Video',
+	'Planning',
+	'Logistics',
+	'HR',
+	'Technical Development',
+	'Sports',
+	'Culture',
+];
 
 const validSchools = ['ensia', 'nhsm', 'nhsast', 'nsnn', 'esi', 'other'];
 

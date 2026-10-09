@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import SocialMedia from "@/components/SocialMedia";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,15 +66,22 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar w-screen py-4 flex justify-between items-center px-8 fixed top-0 bg-background/70 backdrop-blur-sm z-50">
-        <div className="logo text-2xl font-black colored">ESC CLUB</div>
+      <nav className="navbar brand2-navbar w-screen py-4 flex justify-between items-center px-8 fixed top-0 backdrop-blur-sm z-50">
+        {/* <div className="logo brand2-logo text-2xl font-black">ESC CLUB</div> */}
+        <Image
+          src="/svg/misc/logo-white.svg"
+          alt="Logo"
+          width={40}
+          height={40}
+          className="h-10 w-auto"
+        />
 
         {/* Desktop Navigation */}
         <ul className="flex-1 hidden md:flex justify-center items-center gap-8">
           {["home", "events", "departments"].map((item) => (
             <Link key={item} href={`#${item}`}>
               <li
-                className={`text-lg nav-item font-semibold font-lexend cursor-pointer hover:text-primary transition-colors duration-300`}
+                className={`text-lg nav-item font-semibold font-lexend cursor-pointer transition-colors duration-300`}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </li>
@@ -82,7 +90,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <Button variant="primary" className="click" onClick={goToRegister}>
+          <Button variant="primary" className="click brand2-cta" onClick={goToRegister}>
             Register
           </Button>
         </div>
@@ -141,43 +149,55 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-screen w-[280px] bg-white z-[60] shadow-2xl md:hidden flex flex-col"
+              className="brand2-mobile-drawer fixed top-0 right-0 h-screen w-[280px] z-[60] shadow-2xl md:hidden flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="px-10 py-20">
-                <div className="center gap-3">
+              <div className="px-8 py-16">
+                <div className="center">
                   <Image
-                    src="/svg/misc/logo.svg"
-                    alt="Logo"
-                    width={32}
-                    height={32}
+                    src="/svg/misc/logo-gradient.svg"
+                    alt="ESC CLUB"
+                    width={116}
+                    height={37}
+                    className="h-auto w-[116px]"
                   />
-                  <span className="text-5xl font-black colored">ESC CLUB</span>
                 </div>
               </div>
 
               {/* Menu Items */}
               <div className="flex-1 flex flex-col justify-start gap-8 px-6">
-                {["home", "events", "departments"].map((item) => (
+                {[
+                  ["home", "Home"],
+                  ["events", "Events"],
+                  ["departments", "Departments"],
+                  ["team", "Team Members"],
+                ].map(([item, label]) => (
                   <Link
                     key={item}
                     href={`#${item}`}
                     onClick={toggleMobileMenu}
                   >
                     <div
-                      className={`py-4 px-6 mb-2 rounded-lg font-semibold text-4xl text-center cursor-pointer transition-colors ${activeSection === item
-                          ? "bg-[#d9f3ff] text-secondary font-bold"
-                          : "text-gray-700"
+                      className={`brand2-mobile-link py-3 px-5 mb-2 text-center cursor-pointer transition-all ${activeSection === item
+                          ? "brand2-mobile-active"
+                          : "brand2-mobile-item"
                         }`}
                     >
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                      {label}
                     </div>
                   </Link>
                 ))}
 
-                <Button variant="primary" className="text-4xl h-20 mt-20" onClick={goToRegister}>
+                <Button variant="primary" className="brand2-mobile-cta mt-14" onClick={goToRegister}>
                   Register
                 </Button>
+              </div>
+
+              <div className="border-t border-white/20 px-6 pb-8 pt-5">
+                <p className="mb-3 text-center text-xs font-medium tracking-[0.12em] text-white/80">
+                  Connect with us
+                </p>
+                <SocialMedia />
               </div>
             </motion.div>
           </>

@@ -6,7 +6,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Image from "next/image";
 import { managers } from "@/data/managers";
 import { useCarouselScale } from "@/hooks/useCarouselScale";
 import TeamCard from "@/components/TeamCard";
@@ -46,26 +45,13 @@ export default function TeamCarousel() {
       </CarouselContent>
       <button
         onClick={() => api?.scrollPrev()}
-        className="absolute top-1/2 -translate-y-1/2 md:-left-4 left-20 bg-transparent border-none click"
+        className="hidden md:block absolute top-1/2 -translate-y-1/2 md:-left-4 left-20 bg-transparent border-none click"
       >
-        <Image
-          src="/svg/misc/arrow.svg"
-          alt="Previous"
-          width={24}
-          height={24}
-          className="transform rotate-180"
-        />
       </button>
       <button
         onClick={() => api?.scrollNext()}
-        className="absolute top-1/2 -translate-y-1/2 md:-right-4 right-20 bg-transparent border-none click"
+        className="hidden md:block absolute top-1/2 -translate-y-1/2 md:-right-4 right-20 bg-transparent border-none click"
       >
-        <Image
-          src="/svg/misc/arrow.svg"
-          alt="Next"
-          width={24}
-          height={24}
-        />
       </button>
     </Carousel>
   );

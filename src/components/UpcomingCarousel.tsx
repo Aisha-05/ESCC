@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 import { upcomingEvents } from "@/data/upcoming";
@@ -49,36 +47,22 @@ export default function UpcomingCarousel() {
             <button
                 onClick={() => api?.scrollPrev()}
                 disabled={filteredEvents.length <= 1}
-                className={`absolute top-1/2 -translate-y-1/2 left-4 bg-transparent border-none ${
+                className={`hidden md:block absolute top-1/2 -translate-y-1/2 left-4 bg-transparent border-none ${
                     filteredEvents.length <= 1
                         ? "opacity-50 cursor-not-allowed"
                         : "click"
                 }`}
             >
-                <Image
-                    src="/svg/misc/arrow.svg"
-                    alt="Previous"
-                    width={24}
-                    height={24}
-                    className={`transform rotate-180 ${filteredEvents.length <= 1 ? 'grayscale-75' : ''}`}
-                />
             </button>
             <button
                 onClick={() => api?.scrollNext()}
                 disabled={filteredEvents.length <= 1}
-                className={`absolute top-1/2 -translate-y-1/2 right-4 bg-transparent border-none ${
+                className={`hidden md:block absolute top-1/2 -translate-y-1/2 right-4 bg-transparent border-none ${
                     filteredEvents.length <= 1
                         ? "opacity-50 cursor-not-allowed"
                         : "click"
                 }`}
             >
-                <Image
-                    src="/svg/misc/arrow.svg"
-                    alt="Next"
-                    width={24}
-                    height={24}
-                    className={`${filteredEvents.length <= 1 ? 'grayscale-75' : ''}`}
-                />
             </button>
         </Carousel>
     );
