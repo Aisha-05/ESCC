@@ -15,7 +15,7 @@ export default function Footer() {
             <Image src="/svg/misc/logo.svg" alt="" width={35} height={35} />
             <h4 className="colored">ESC CLUB</h4>
           </div>
-          <p>&copy; 2025 ESCC</p>
+          <p>&copy; 2026 ESCC</p>
         </div>
 
         <div className="site-footer-socials">

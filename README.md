@@ -131,4 +131,4 @@ src/
 
 **Developed for ESCC (ENSIA Sports & Culture Club)**
 **By:** *Manaa Mohaned*
-© 2025 ESCC
+© 2026 ESCC
