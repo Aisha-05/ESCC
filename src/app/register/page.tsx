@@ -109,7 +109,7 @@ export default function RegisterPage() {
           </article>
         </div>
       )}
-      <p className="registration-page-footer"><span>ENSIA SPORT & CULTURE CLUB</span><span className="registration-footer-dot" aria-hidden="true" /><span>Made for students. Powered by community.</span></p>
+      <p className="registration-page-footer"><span>ENSIA SPORT & CULTURE CLUB</span></p>
     </main>
   );
 }
