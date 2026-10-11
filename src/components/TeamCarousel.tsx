@@ -9,6 +9,7 @@ import {
 import { managers } from "@/data/managers";
 import { useCarouselScale } from "@/hooks/useCarouselScale";
 import TeamCard from "@/components/TeamCard";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function TeamCarousel() {
   const { api, setApi, scaleValues } = useCarouselScale();
@@ -43,16 +44,14 @@ export default function TeamCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <button
-        onClick={() => api?.scrollPrev()}
-        className="hidden md:block absolute top-1/2 -translate-y-1/2 md:-left-4 left-20 bg-transparent border-none click"
-      >
-      </button>
-      <button
-        onClick={() => api?.scrollNext()}
-        className="hidden md:block absolute top-1/2 -translate-y-1/2 md:-right-4 right-20 bg-transparent border-none click"
-      >
-      </button>
+      <div className="home-team-controls mt-6 flex justify-center gap-4">
+        <button type="button" aria-label="Previous team member" onClick={() => api?.scrollPrev()} className="flex size-[44px] items-center justify-center rounded-full border border-cyan-500 text-primary">
+          <ArrowLeft size={20} />
+        </button>
+        <button type="button" aria-label="Next team member" onClick={() => api?.scrollNext()} className="flex size-[44px] items-center justify-center rounded-full border border-cyan-500 text-primary">
+          <ArrowRight size={20} />
+        </button>
+      </div>
     </Carousel>
   );
 }

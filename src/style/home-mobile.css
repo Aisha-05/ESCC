@@ -1,0 +1,118 @@
+/* Keep homepage content readable independently of the legacy rem scaling. */
+@media (max-width: 1023px) {
+  html:has(.home-site) {
+    font-size: 16px;
+    scroll-snap-type: none;
+    scroll-padding-top: 80px;
+  }
+
+  .home-site main { scroll-snap-type: none; }
+  .home-site section { scroll-snap-align: none; }
+  .home-site main > section { width: 100%; height: auto; min-height: 0; margin: 0; }
+  .home-site main h2 { font-size: clamp(30px, 7.5vw, 38px); line-height: 1.15; }
+  .home-site main > section > h1,
+  .home-site #departments > div > h1 { font-size: min(44vw, 280px); pointer-events: none; }
+
+  .home-site .brand2-navbar { width: 100%; height: 64px; padding: 0 24px; }
+  .home-site .brand2-navbar > img { width: 76px; height: auto; }
+  .home-site .home-nav-links,
+  .home-site .home-nav-register { display: none; }
+  .home-site .home-menu-button { display: block; }
+  .home-site .home-menu-button button { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .home-site .home-menu-backdrop { display: block; }
+  .home-site .brand2-mobile-drawer { display: flex; width: min(320px, 100%); height: 100dvh; overflow-y: auto; }
+  .home-site .home-drawer-header { padding: 72px 24px 24px; }
+  .home-site .home-drawer-links { gap: 8px; padding: 0 24px; }
+  .home-site .brand2-mobile-link { display: flex; align-items: center; justify-content: center; min-height: 48px; margin: 0; font-size: 16px; }
+  .home-site .brand2-mobile-cta { min-height: 48px; margin-top: 16px; flex-shrink: 0; }
+  .home-site .brand2-mobile-drawer > div:last-child { margin-top: 24px; }
+  .home-site .brand2-mobile-drawer a[aria-label] { min-width: 44px; min-height: 44px; }
+
+  .home-site #home { min-height: 620px; overflow: hidden; }
+  .home-site .home-hero-content { width: calc(100% - 48px); max-width: 640px; margin: 0 24px; padding: 112px 0 136px; gap: 24px; z-index: 30; }
+  .home-site .home-hero-content h1 { padding: 0; font-size: clamp(36px, 10vw, 56px); line-height: 1.12; overflow-wrap: break-word; }
+  .home-site .home-hero-content p { width: 100%; max-width: 40ch; font-size: 16px; line-height: 1.65; }
+  .home-site .home-hero-actions { width: 100%; max-width: 360px; gap: 12px; }
+  .home-site .home-hero-actions a { min-width: 0; }
+  .home-site .home-hero-actions button { width: 100%; min-width: 0; height: 48px; padding: 12px; font-size: 15px; }
+  .home-site .hero-brand2-logo { width: 100px; right: 28px; bottom: 12px; }
+
+  .home-site #about { padding: 56px 24px; }
+  .home-site #aboutus { width: 100%; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .home-site .about-copy { width: 100%; max-width: 60ch; font-size: 16px; line-height: 1.75; }
+  .home-site #aboutus > div:last-child > div { width: 100%; max-width: 360px; height: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; padding-top: 16px; }
+  .home-site #aboutus > div:last-child > div > div { position: relative; inset: auto; }
+  .home-site #aboutus > div:last-child > div > div:last-child { grid-column: span 2; width: 50%; margin-inline: auto; }
+  .home-site #aboutus img { width: 100%; }
+
+  .home-site #recentevents { padding: 56px 0; gap: 28px; }
+  .home-site #recentevents > h2 { padding-inline: 24px; }
+  .home-site #recentevents > div { width: 100%; max-width: 100%; height: auto; }
+  .home-site #recentevents > div > div { padding-block: 0; }
+  .home-site .home-recent-card { width: calc(100vw - 48px); max-width: 640px; aspect-ratio: 4 / 3; }
+  .home-site .home-recent-card > div:last-child { padding: 16px; gap: 8px; }
+  .home-site .home-recent-card h3 { font-size: 24px; line-height: 1.15; }
+  .home-site .home-recent-card p { font-size: 14px; }
+  .home-site .home-carousel-navigation { gap: 24px; margin-top: 24px; }
+  .home-site .home-carousel-navigation > div { display: none; }
+  .home-site .home-carousel-navigation > button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .home-site .home-carousel-navigation img { width: 28px; height: 28px; }
+  .home-site .home-carousel-count { display: block; margin: 0; color: var(--brand2-secondary-text); font-size: 14px; }
+
+  .home-site #events { padding: 56px 0; gap: 28px; }
+  .home-site #events > div:first-of-type,
+  .home-site #events h2 { margin-bottom: 0; }
+  .home-site #events > div:nth-of-type(2) [data-slot="carousel"] { display: block; margin: 0 auto; }
+  .home-site #events .home-upcoming-desktop { display: none; }
+  .home-site #events [data-slot="carousel-item"] { flex-basis: 100%; }
+  .home-site #events [data-slot="carousel-item"] > div { width: calc(100vw - 48px); max-width: 360px; padding: 0; transform: none !important; }
+  .home-site .home-upcoming-card { width: 100%; aspect-ratio: auto; }
+  .home-site .home-upcoming-card > div { display: flex; flex-direction: column; }
+  .home-site .home-upcoming-card > div > img { height: 200px; }
+  .home-site .home-upcoming-card > div > div { padding: 20px; gap: 16px; }
+  .home-site .home-upcoming-card h3 { font-size: 24px; line-height: 1.2; }
+  .home-site .home-upcoming-card p { padding: 0; min-height: 0; font-size: 15px; line-height: 1.6; -webkit-line-clamp: unset; }
+  .home-site .home-upcoming-card button { position: static; width: 100%; height: 48px; margin: 0; font-size: 16px; }
+
+  .home-site #departments { padding: 56px 24px; overflow: hidden; }
+  .home-site #departments > .container { width: 100%; max-width: 760px; }
+  .home-site #departments h2 { margin-bottom: 32px; }
+  .home-site #departments .container > div { width: 100%; }
+  .home-site #departments h3 { margin-bottom: 24px; font-size: 24px; line-height: 1.2; }
+  .home-site #departments section > div { gap: 20px; }
+  .home-site .home-department-card { max-width: 360px; height: 248px; }
+  .home-site .home-department-card h4 { font-size: 20px; white-space: normal; line-height: 1.3; }
+  .home-site .home-department-card > div { padding: 24px 20px; }
+  .home-site .home-department-card p { display: block; max-width: none; min-height: 0; padding: 0; font-size: 14px; line-height: 1.6; }
+  .home-site .home-department-card button { width: 152px; min-height: 44px; padding: 10px 16px; font-size: 14px; margin-top: 16px; }
+
+  .home-site #team { padding: 56px 0; gap: 28px; overflow: hidden; }
+  .home-site #team h2 { padding-inline: 24px; }
+  .home-site #team > div:last-child { margin-top: 0; }
+  .home-site #team [data-slot="carousel-item"] > div { padding: 0; transform: none !important; }
+  .home-site .home-team-card { width: min(calc(100vw - 64px), 300px); }
+  .home-site .home-team-card h3 { font-size: 22px; line-height: 1.2; }
+  .home-site .home-team-card p { font-size: 14px; line-height: 1.5; }
+  .home-site .home-team-controls { margin-top: 24px; }
+
+  .home-site footer { width: 100%; height: auto; padding: 64px 24px 24px; gap: 24px; }
+  .home-site footer > .container { width: 100%; grid-template-columns: 1fr; gap: 24px; }
+  .home-site footer .container > div { padding: 0; }
+  .home-site footer p { font-size: 14px; }
+  .home-site footer h4 { font-size: 24px; }
+  .home-site footer .container > div:last-child { gap: 16px; }
+  .home-site footer .container a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .home-site footer .container a img { width: 24px; }
+  .home-site footer > div:last-child { margin-top: 0; font-size: 12px; }
+  .home-site footer > div:last-child a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .home-site #departments section > div { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .home-site #departments section > div > div:only-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1023px) and (max-height: 500px) {
+  .home-site .home-drawer-header { padding-top: 24px; }
+  .home-site #home { min-height: 0; }
+}

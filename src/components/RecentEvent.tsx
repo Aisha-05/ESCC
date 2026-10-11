@@ -8,7 +8,7 @@ type RecentEventProps = {
 
 export default function RecentEvent({ image, title, date }: RecentEventProps) {
     return (
-        <div className="relative rounded-xl overflow-hidden md:aspect-video aspect-[4/3] lg:w-[50vw] w-[90vw]">
+        <div className="home-recent-card relative rounded-xl overflow-hidden md:aspect-video aspect-[4/3] lg:w-[50vw] w-[90vw]">
             <Image
                 src={image}
                 alt=""

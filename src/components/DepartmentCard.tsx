@@ -25,7 +25,7 @@ export default function DepartmentCard({
 
     return (
         <div 
-            className={`group relative mx-auto h-[190px] w-full max-w-[285px] min-w-0 rounded-2xl transition-all duration-500 [transform-style:preserve-3d] md:h-[215px] md:max-w-[300px] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} hover:scale-[1.02] hover:-translate-y-1`}
+            className={`home-department-card group relative mx-auto h-[190px] w-full max-w-[285px] min-w-0 rounded-2xl transition-all duration-500 [transform-style:preserve-3d] md:h-[215px] md:max-w-[300px] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} hover:scale-[1.02] hover:-translate-y-1`}
         >
             
             {/* Front of the card */}

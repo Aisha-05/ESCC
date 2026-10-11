@@ -67,6 +67,7 @@ export default function RecentCarousel() {
 
             {/* Navigation Controls */}
             <CarousalNavigation
+                className="home-carousel-navigation"
                 scrollPrev={scrollPrev}
                 scrollNext={scrollNext}
                 scrollTo={scrollTo}

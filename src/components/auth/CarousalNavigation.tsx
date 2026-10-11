@@ -56,6 +56,10 @@ export default function CarousalNavigation({
                 ))}
             </div>
 
+            <p className="home-carousel-count hidden" aria-live="polite">
+                {current + 1} / {count}
+            </p>
+
             {/* Right Arrow */}
             <button
                 type="button"

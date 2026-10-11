@@ -3,19 +3,57 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import SocialMedia from "@/components/SocialMedia";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   async function goToRegister() {
     window.location.href = "/register";
   }
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    drawerRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const controls = drawerRef.current?.querySelectorAll<HTMLElement>("a, button");
+        if (!controls?.length) return;
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setIsMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [isMobileMenuOpen]);
 
   // 🔹 Detect active section from hash or scroll
   useEffect(() => {
@@ -77,7 +115,7 @@ export default function Navbar() {
         />
 
         {/* Desktop Navigation */}
-        <ul className="flex-1 hidden md:flex justify-center items-center gap-8">
+        <ul className="home-nav-links flex-1 hidden md:flex justify-center items-center gap-8">
           {["home", "events", "departments"].map((item) => (
             <Link key={item} href={`#${item}`}>
               <li
@@ -89,15 +127,20 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="home-nav-register hidden md:block">
           <Button variant="primary" className="click brand2-cta" onClick={goToRegister}>
             Register
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="home-menu-button md:hidden">
           <button
+            type="button"
+            ref={toggleRef}
+            aria-label="Open menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="home-mobile-menu"
             onClick={toggleMobileMenu}
             className="text-2xl z-[60] relative text-white"
           >
@@ -139,11 +182,16 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[55] md:hidden"
+              className="home-menu-backdrop fixed inset-0 bg-black/30 backdrop-blur-sm z-[55] md:hidden"
             />
 
             {/* Side Drawer */}
             <motion.div
+              ref={drawerRef}
+              id="home-mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Main menu"
               key="drawer"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -152,7 +200,20 @@ export default function Navbar() {
               className="brand2-mobile-drawer fixed top-0 right-0 h-screen w-[280px] z-[60] shadow-2xl md:hidden flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="px-8 py-16">
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  toggleRef.current?.focus();
+                }}
+                className="absolute top-3 right-3 flex size-[44px] items-center justify-center text-white"
+              >
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="m6 6 12 12M6 18 18 6" />
+                </svg>
+              </button>
+              <div className="home-drawer-header px-8 py-16">
                 <div className="center">
                   <Image
                     src="/svg/misc/logo-gradient.svg"
@@ -165,7 +226,7 @@ export default function Navbar() {
               </div>
 
               {/* Menu Items */}
-              <div className="flex-1 flex flex-col justify-start gap-8 px-6">
+              <div className="home-drawer-links flex-1 flex flex-col justify-start gap-8 px-6">
                 {[
                   ["home", "Home"],
                   ["events", "Events"],

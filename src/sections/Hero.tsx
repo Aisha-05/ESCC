@@ -20,7 +20,7 @@ export default function Hero() {
       <AOS
         as="div"
         animation="fade-up"
-        className="relative container mx-8 md:mx-24 mt-20 flex col gap-16 sm:gap-10 md:gap-16"
+        className="home-hero-content relative container mx-8 md:mx-24 mt-20 flex col gap-16 sm:gap-10 md:gap-16"
         offset={160}
       >
         <AOS
@@ -42,7 +42,7 @@ export default function Hero() {
           passion, knowledge, and creativity.
         </AOS>
 
-        <AOS as="div" animation="fade-up" delay={200} className="grid grid-cols-2 w-max gap-6 z-30">
+        <AOS as="div" animation="fade-up" delay={200} className="home-hero-actions grid grid-cols-2 w-max gap-6 z-30">
           <Link href="/register">
             <Button className="brand2-cta w-40" variant="primary">
               Register

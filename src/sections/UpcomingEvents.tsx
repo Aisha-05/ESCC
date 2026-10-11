@@ -35,7 +35,7 @@ export default function UpcomingEvents() {
         <UpcomingCarousel />
       </AOS>
 
-      <AOS as="div" animation="fade-up" delay={200} className="hidden md:flex z-30 overflow-visible">
+      <AOS as="div" animation="fade-up" delay={200} className="home-upcoming-desktop hidden md:flex z-30 overflow-visible">
         <UpcomingSlider />
       </AOS>
     </section>
