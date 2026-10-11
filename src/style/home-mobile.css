@@ -1,12 +1,19 @@
 /* Keep homepage content readable independently of the legacy rem scaling. */
+/* Horizontal clipping must not create a second vertical scroll container. */
+html:has(.home-site),
+body:has(.home-site),
+.home-site main {
+  overflow-x: clip;
+  overflow-y: visible;
+  scroll-snap-type: none;
+}
+
 @media (max-width: 1023px) {
   html:has(.home-site) {
     font-size: 16px;
-    scroll-snap-type: none;
     scroll-padding-top: 80px;
   }
 
-  .home-site main { scroll-snap-type: none; }
   .home-site section { scroll-snap-align: none; }
   .home-site main > section { width: 100%; height: auto; min-height: 0; margin: 0; }
   .home-site main h2 { font-size: clamp(30px, 7.5vw, 38px); line-height: 1.15; }
@@ -95,16 +102,6 @@
   .home-site .home-team-card p { font-size: 14px; line-height: 1.5; }
   .home-site .home-team-controls { margin-top: 24px; }
 
-  .home-site footer { width: 100%; height: auto; padding: 64px 24px 24px; gap: 24px; }
-  .home-site footer > .container { width: 100%; grid-template-columns: 1fr; gap: 24px; }
-  .home-site footer .container > div { padding: 0; }
-  .home-site footer p { font-size: 14px; }
-  .home-site footer h4 { font-size: 24px; }
-  .home-site footer .container > div:last-child { gap: 16px; }
-  .home-site footer .container a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
-  .home-site footer .container a img { width: 24px; }
-  .home-site footer > div:last-child { margin-top: 0; font-size: 12px; }
-  .home-site footer > div:last-child a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 
 @media (min-width: 600px) and (max-width: 1023px) {

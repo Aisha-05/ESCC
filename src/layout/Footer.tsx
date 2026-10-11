@@ -3,40 +3,33 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="footer-brand-card w-screen col xl:h-[calc(40vh)] relative p-4 text-white text-center pt-4 md:pt-20 xl:pt-40 md:px-40 mx-auto center overflow-hidden">
+    <footer className="site-footer">
+      <svg className="site-footer-wave" viewBox="0 0 734 147" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M734.672 95.6313C734.672 95.6313 631.18 20.1728 560.093 25.7437C489.006 31.3145 446.277 55.9632 368.295 42.9696C290.312 29.976 63.6706 59.9055 -0.684725 146.048L-1 -1H736L734.672 95.6313Z" fill="white" />
+      </svg>
 
-      <Image src="/svg/misc/footer-wave.svg" alt="Scroll Down" width={1920} height={1080} className="absolute z-20 block w-full border-0 outline-none md:-top-10 -top-2" />
-
-      <div className="container mx-auto grid md:gap-0 md:grid-cols-2 h-full z-30 ">
-
-        <div className="center col md:pl-10 pt-10">
-          <p className="md:text-2xl font-bold text-nowrap">Developed by</p>
-
-          <div className="center md:gap-8 my-4 font-black md:text-5xl text-xl text-nowrap gap-4">
-            <Image src="/svg/misc/logo.svg" alt="ESC CLUB" width={35} height={35}  />
-            <h4 className="colored font-bold">ESC CLUB</h4>
+      <div className="site-footer-content">
+        <div className="site-footer-brand">
+          <p className="site-footer-label">Developed by</p>
+          <div className="site-footer-logo">
+            <Image src="/svg/misc/logo.svg" alt="" width={35} height={35} />
+            <h4 className="colored">ESC CLUB</h4>
           </div>
-          <p className="md:text-xl font-bold text-nowrap">&copy; 2025 ESCC
-          </p>
-
+          <p>&copy; 2025 ESCC</p>
         </div>
 
-        <div className="center md:pr-10 md:gap-12 gap-4">
-          <Link href="mailto:escc@ensia.edu.com" target="_blank" className="w-max h-max"><Image className="click w-8" src="/svg/icon/social/gmail.svg" alt="gmail" width={40} height={40} /></Link>
-          <Link href="https://dz.linkedin.com/company/ensia-sports-culture-club" target="_blank" className="w-max h-max"><Image className="click w-8" src="/svg/icon/social/linkedin.svg" alt="linkedin" width={40} height={40} /></Link>
-          <Link href="https://www.tiktok.com/@escclub" target="_blank" className="w-max h-max"><Image className="click w-8" src="/svg/icon/social/tiktok.svg" alt="tiktok" width={40} height={40} /></Link>
-          <Link href="https://www.instagram.com/ensia.sport.culture.club/?hl=en" target="_blank" className="w-max h-max"><Image className="click w-8" src="/svg/icon/social/instagram.svg" alt="instagram" width={40} height={40} /></Link>
+        <div className="site-footer-socials">
+          <Link href="mailto:escc@ensia.edu.com" target="_blank" rel="noopener noreferrer"><Image className="click" src="/svg/icon/social/gmail.svg" alt="gmail" width={32} height={32} /></Link>
+          <Link href="https://dz.linkedin.com/company/ensia-sports-culture-club" target="_blank" rel="noopener noreferrer"><Image className="click" src="/svg/icon/social/linkedin.svg" alt="linkedin" width={32} height={32} /></Link>
+          <Link href="https://www.tiktok.com/@escclub" target="_blank" rel="noopener noreferrer"><Image className="click" src="/svg/icon/social/tiktok.svg" alt="tiktok" width={32} height={32} /></Link>
+          <Link href="https://www.instagram.com/ensia.sport.culture.club/?hl=en" target="_blank" rel="noopener noreferrer"><Image className="click" src="/svg/icon/social/instagram.svg" alt="instagram" width={32} height={32} /></Link>
         </div>
-
       </div>
 
-      <div className="center mt-10">
-        by &nbsp;
-        <Link href={'https://github.com/mohaneddz'} className="underline md:text-secondary-light text-white/80 font-bold" target="_blank" rel="noopener noreferrer">
-          MANAA Mohaned
-        </Link>
-      </div>
-
+      <p className="site-footer-credit">
+        <span>by</span>
+        <Link href="https://github.com/Aisha-05/ESCC" target="_blank" rel="noopener noreferrer">Technical Department</Link>
+      </p>
     </footer>
   );
 };

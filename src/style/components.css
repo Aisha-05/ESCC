@@ -163,6 +163,49 @@
   box-shadow: 0 22px 40px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
+.site-footer {
+  --footer-wave-height: clamp(64px, 8vw, 144px);
+  position: relative;
+  width: 100%;
+  padding: calc(var(--footer-wave-height) + 32px) 24px 24px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  color: white;
+  text-align: center;
+}
+
+.site-footer-wave {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: var(--footer-wave-height);
+  pointer-events: none;
+}
+
+.site-footer-content {
+  position: relative;
+  max-width: 1280px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+}
+
+.site-footer-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 16px; font-weight: 700; }
+.site-footer-label { font-size: clamp(18px, 1.5vw, 24px); }
+.site-footer-logo { display: flex; align-items: center; justify-content: center; gap: 24px; }
+.site-footer-logo h4 { font-size: clamp(24px, 2.5vw, 40px); font-weight: 800; }
+.site-footer-socials { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(16px, 2vw, 40px); }
+.site-footer-socials a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.site-footer-credit { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px; margin-top: 24px; font-size: 14px; }
+.site-footer-credit a { display: inline-flex; align-items: center; min-height: 44px; color: #ffffffcc; font-weight: 700; text-decoration: underline; }
+
+@media (max-width: 1023px) {
+  .site-footer-content { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .site-footer-brand { font-size: 14px; }
+  .site-footer-credit { margin-top: 16px; font-size: 12px; }
+}
+
 .footer-brand-card-button {
   background: color-mix(in srgb, var(--secondary) 72%, var(--primary)) !important;
   border: 1px solid color-mix(in srgb, var(--tertiary) 60%, transparent) !important;
