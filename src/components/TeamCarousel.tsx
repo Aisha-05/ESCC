@@ -44,7 +44,7 @@ export default function TeamCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="home-team-controls mt-6 flex justify-center gap-4">
+      <div className="home-team-controls mt-6 hidden justify-center gap-4 lg:flex">
         <button type="button" aria-label="Previous team member" onClick={() => api?.scrollPrev()} className="flex size-[44px] items-center justify-center rounded-full border border-cyan-500 text-primary">
           <ArrowLeft size={20} />
         </button>

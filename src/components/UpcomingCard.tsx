@@ -24,7 +24,7 @@ export default function UpcomingCard({ image, title, date, description, show, op
 
                             <Button
                                 variant="card_white"
-                                className="md:mt-4 font-lexend flex justify-between gap-2 text-xl absolute bottom-4 left-4 w-[90%]"
+                                className="absolute bottom-4 left-4 flex !h-7 !min-h-0 !w-fit !min-w-0 justify-center gap-1 !rounded-md !px-2 !py-0 font-lexend text-[11px] leading-none"
                                 disabled={!open}
                             >
                                 {open ? "Register!" : "Soon.."}

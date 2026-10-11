@@ -29,7 +29,7 @@ export default function CarousalNavigation({
             <button
                 type="button"
                 onClick={scrollPrev}
-                className={`${hideArrowsOnMobile ? "hidden md:inline-flex" : "inline-flex"} click ${disablePrev ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`${hideArrowsOnMobile ? "hidden lg:inline-flex" : "inline-flex"} click ${disablePrev ? "opacity-50 cursor-not-allowed" : ""}`}
                 aria-label="Previous slide"
                 aria-disabled={disablePrev}
                 disabled={disablePrev}
@@ -56,15 +56,11 @@ export default function CarousalNavigation({
                 ))}
             </div>
 
-            <p className="home-carousel-count hidden" aria-live="polite">
-                {current + 1} / {count}
-            </p>
-
             {/* Right Arrow */}
             <button
                 type="button"
                 onClick={scrollNext}
-                className={`${hideArrowsOnMobile ? "hidden md:inline-flex" : "inline-flex"} click ${disableNext ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`${hideArrowsOnMobile ? "hidden lg:inline-flex" : "inline-flex"} click ${disableNext ? "opacity-50 cursor-not-allowed" : ""}`}
                 aria-label="Next slide"
                 aria-disabled={disableNext}
                 disabled={disableNext}
