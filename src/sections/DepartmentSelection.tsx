@@ -15,8 +15,6 @@ const departments = [
   "Logistics",
   "HR",
   "Technical Development",
-  "Sports",
-  "Culture",
 ];
 
 const choices = [

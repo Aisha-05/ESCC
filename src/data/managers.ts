@@ -10,14 +10,54 @@ export const managers = [
 		image: '/image/managers 2/optimized/amina-gadiri.webp',
 	},
 	{
-		name: 'Debab Manel Bouchra',
-		title: 'Marketing Manager',
-		image: '/image/managers 2/optimized/debab-manel-bouchra.webp',
+		name: 'Ayyoub Saci',
+		title: 'Sports Manager',
+		image: '/image/managers 2/optimized/ayoub-saci.webp',
+	},
+	{
+		name: 'Zakaria Ammar',
+		title: 'Sports Manager',
+		image: '/image/managers 2/optimized/zakaria-ammar.webp',
 	},
 	{
 		name: 'Randa Markhoufa',
 		title: 'Cultural Activities Manager',
 		image: '/image/managers 2/optimized/randa-markhoufa.webp',
+	},
+	{
+		name: 'Debab Manel Bouchra',
+		title: 'Marketing Manager',
+		image: '/image/managers 2/optimized/debab-manel-bouchra.webp',
+	},
+	{
+		name: 'Alia Tliba',
+		title: 'Planning Manager',
+		image: '/image/managers 2/alia tliba.avif',
+	},
+	{
+		name: 'Chaima Taberkokt',
+		title: 'Planning Manager',
+		image: '/image/managers 2/optimized/chaima-taberkokt.webp',
+	},
+	{
+		name: 'Hadjer Benhamou',
+		title: 'Design Manager',
+		image: '/image/managers 2/Hadjer Benhamou.avif',
+	},
+	{
+		name: 'Chouali Widjdane',
+		title: 'Media Manager',
+		image: '/image/managers 2/optimized/chouali-widjdane.webp',
+	},
+	{
+		name: 'Salhi Fadoua',
+		title: 'Posting Manager',
+		image: '/image/managers 2/optimized/salhi-fadoua.webp',
+	},
+	{
+		name: 'Laib Salsabil',
+		title: 'Live Coverage Manager',
+		image: '/image/managers 2/optimized/laib-salsabil.webp',
 	},
 	{
 		name: 'El Mouataz Bellah Ferhat',
@@ -40,19 +80,14 @@ export const managers = [
 		image: '/image/managers 2/optimized/wassim-elorabi.webp',
 	},
 	{
-		name: 'Alia Tliba',
-		title: 'Planning Manager',
-		image: '/image/managers 2/alia tliba.avif',
+		name: 'Aya Ismahane Kharcha',
+		title: 'Human Resources Manager',
+		image: '/image/managers 2/optimized/aya-ismahane-kharcha.webp',
 	},
 	{
-		name: 'Chaima Taberkokt',
-		title: 'Planning Manager',
-		image: '/image/managers 2/optimized/chaima-taberkokt.webp',
-	},
-	{
-		name: 'Hadjer Benhamou',
-		title: 'Design Manager',
-		image: '/image/managers 2/Hadjer Benhamou.avif',
+		name: 'Bedjghit Yousra',
+		title: 'Human Resources Manager',
+		image: '/image/managers 2/optimized/yousra.webp',
 	},
 	{
 		name: 'Mameri Amanda Ines',
@@ -65,26 +100,6 @@ export const managers = [
 		image: '/image/managers 2/optimized/ahmed-djaber-daghri.webp',
 	},
 	{
-		name: 'Aya Ismahane Kharcha',
-		title: 'Human Resources Manager',
-		image: '/image/managers 2/optimized/aya-ismahane-kharcha.webp',
-	},
-	{
-		name: 'Chouali Widjdane',
-		title: 'Media Manager',
-		image: '/image/managers 2/optimized/chouali-widjdane.webp',
-	},
-	{
-		name: 'Laib Salsabil',
-		title: 'Live Coverage Manager',
-		image: '/image/managers 2/optimized/laib-salsabil.webp',
-	},
-	{
-		name: 'Salhi Fadoua',
-		title: 'Posting Manager',
-		image: '/image/managers 2/optimized/salhi-fadoua.webp',
-	},
-	{
 		name: 'Hamadi Mohammed Abdellah',
 		title: 'Technical Dev Manager',
 		image: '/image/managers 2/optimized/hamadi-mohammed-abdellah.webp',
@@ -95,28 +110,15 @@ export const managers = [
 		image: '/image/managers 2/optimized/aisha-djahara-2.webp',
 	},
 	{
-		name: 'Ouserir Mohamed Amine',
-		title: 'Sport Activities Manager',
-		image: '/image/managers 2/optimized/ouserir-mohamed-amine.webp',
-	},
-	{
-		name: 'Zakaria Ammar',
-		title: 'Sport Activities Manager',
-		image: '/image/managers 2/optimized/zakaria-ammar.webp',
-	},
-	{
 		name: 'Aymen Seray',
-		title: 'Manager',
+		title: 'Secretary General',
 		image: '/image/managers 2/optimized/aymen-seray.webp',
 	},
-	{
-		name: 'Ayoub Saci',
-		title: 'Manager',
-		image: '/image/managers 2/optimized/ayoub-saci.webp',
-	},
-	{
-		name: 'Bedjghit Yousra',
-		title: 'Human Resources Manager',
-		image: '/image/managers 2/optimized/yousra.webp',
-	},
+];
+
+// On mobile, the Secretary General follows the president and vice president.
+export const mobileManagers = [
+	...managers.slice(0, 2),
+	managers[managers.length - 1],
+	...managers.slice(2, -1),
 ];

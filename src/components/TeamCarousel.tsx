@@ -6,13 +6,37 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { managers } from "@/data/managers";
+import { managers, mobileManagers } from "@/data/managers";
 import { useCarouselScale } from "@/hooks/useCarouselScale";
 import TeamCard from "@/components/TeamCard";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+const mobileLayoutQuery = "(max-width: 1023px)";
+
+function subscribeToMobileLayout(onChange: () => void) {
+  const query = window.matchMedia(mobileLayoutQuery);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+function isMobileLayout() {
+  return window.matchMedia(mobileLayoutQuery).matches;
+}
+
+function serverLayout() {
+  return false;
+}
+
 export default function TeamCarousel() {
   const { api, setApi, scaleValues } = useCarouselScale();
+  const isMobile = React.useSyncExternalStore(subscribeToMobileLayout, isMobileLayout, serverLayout);
+  const orderedManagers = isMobile ? mobileManagers : managers;
+
+  React.useEffect(() => {
+    if (!api) return;
+    api.reInit();
+    api.scrollTo(0, true);
+  }, [api, isMobile]);
 
   return (
     <Carousel
@@ -24,9 +48,9 @@ export default function TeamCarousel() {
       className="w-full max-w-6xl"
     >
       <CarouselContent className="-ml-4">
-        {managers.map((manager, index) => (
+        {orderedManagers.map((manager, index) => (
           <CarouselItem
-            key={index}
+            key={manager.name}
             className="pl-4 md:basis-1/2 lg:basis-1/3"
           >
             <div

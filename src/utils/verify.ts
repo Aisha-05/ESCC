@@ -8,8 +8,6 @@ const validDepartments = [
 	'Logistics',
 	'HR',
 	'Technical Development',
-	'Sports',
-	'Culture',
 ];
 
 const validSchools = ['ensia', 'nhsm', 'nhsast', 'nsnn', 'esi', 'other'];
