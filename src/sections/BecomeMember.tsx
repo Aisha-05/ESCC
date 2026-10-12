@@ -28,9 +28,6 @@ export default function BecomeMember({ mainData, setMainData, showErrors }: Beco
       <Input label="Phone number" placeholder="0550 123 456" type="tel" name="phone" autoComplete="tel" inputMode="tel" value={mainData.phone} onChange={(e) => update("phone", e.target.value)} verifier={verifyPhone} necessary showErrors={showErrors} errorMessage="Use an Algerian number starting with 05, 06, 07, or +213." />
       <InputSelect label="School" name="school" value={mainData.school} onChange={(e) => update("school", e.target.value)} options={schools} required />
       <InputSelect label="Year of study" name="year" value={mainData.year} onChange={(e) => update("year", e.target.value)} options={years} required />
-      <div className="registration-field-wide">
-        <Input label="Instagram username" placeholder="@your.username" name="instagram" autoCapitalize="none" value={mainData.instagram ?? ""} onChange={(e) => update("instagram", e.target.value)} />
-      </div>
     </div>
   );
 }

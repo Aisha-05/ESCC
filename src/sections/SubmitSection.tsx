@@ -13,7 +13,6 @@ export default function SubmitSection({ mainData, departmentData, motivationData
     ["Email", mainData.email], ["Phone", mainData.phone],
     ["School", mainData.school === "other" ? "Other" : mainData.school.toUpperCase()],
     ["Year of study", mainData.year === "alumni" ? "Alumni" : `Year ${mainData.year}`],
-    ...(mainData.instagram ? [["Instagram", mainData.instagram]] : []),
   ];
   return (
     <div className="registration-review">
