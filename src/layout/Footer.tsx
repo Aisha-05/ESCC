@@ -28,7 +28,7 @@ export default function Footer() {
 
       <p className="site-footer-credit">
         <span>by</span>
-        <Link href="https://github.com/Aisha-05/ESCC" target="_blank" rel="noopener noreferrer">Technical Department</Link>
+        <strong>Technical Department</strong>
       </p>
     </footer>
   );

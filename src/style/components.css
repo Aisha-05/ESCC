@@ -198,7 +198,7 @@
 .site-footer-socials { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(16px, 2vw, 40px); }
 .site-footer-socials a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
 .site-footer-credit { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px; margin-top: 24px; font-size: 14px; }
-.site-footer-credit a { display: inline-flex; align-items: center; min-height: 44px; color: #ffffffcc; font-weight: 700; text-decoration: underline; }
+.site-footer-credit strong { display: inline-flex; align-items: center; min-height: 44px; color: #ffffffcc; font-weight: 700; }
 
 @media (max-width: 1023px) {
   .site-footer-content { grid-template-columns: minmax(0, 1fr); gap: 24px; }
