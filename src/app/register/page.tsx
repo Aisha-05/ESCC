@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, LoaderCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CircleOff, LoaderCircle } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import RegistrationStepper from "@/components/auth/RegistrationStepper";
 import BecomeMember from "@/sections/BecomeMember";
@@ -13,7 +13,35 @@ import SubmitSection from "@/sections/SubmitSection";
 import ThankYou from "@/sections/ThankYou";
 import { registrationSteps, useRegister } from "@/hooks/useRegister";
 
-export default function RegisterPage() {
+const REGISTRATION_OPEN = false;
+
+function RegistrationClosed() {
+  return (
+    <main className="registration-page">
+      <div className="registration-ambient" aria-hidden="true" />
+      <header className="registration-topbar">
+        <Link href="/" className="registration-brand" aria-label="ESCC home">
+          <Image src="/svg/misc/logo.svg" alt="" width={30} height={42} />
+          <span>ESCC<span>SPORT & CULTURE CLUB</span></span>
+        </Link>
+        <Link className="registration-home-link" href="/"><ArrowLeft size={16} aria-hidden="true" /><span>Back to home</span></Link>
+      </header>
+
+      <div className="registration-shell">
+        <div className="registration-success registration-closed">
+          <span className="registration-success-icon"><CircleOff size={36} aria-hidden="true" /></span>
+          <p className="registration-eyebrow">MEMBERSHIP APPLICATION</p>
+          <h1>Registrations are <span>closed.</span></h1>
+          <p>The registration period has ended for now. Follow ESCC on social media to hear when applications open again.</p>
+          <Link className="registration-button registration-button-primary" href="/">Back to home<ArrowLeft size={18} aria-hidden="true" /></Link>
+        </div>
+      </div>
+      <p className="registration-page-footer"><span>ENSIA SPORT & CULTURE CLUB</span></p>
+    </main>
+  );
+}
+
+function RegistrationForm() {
   const registration = useRegister();
   const { isRegistered, currPage, maxStep, completed, mainData, setMainData, departmentData, setDepartmentData, motivationData, setMotivationData, scrollPrev, scrollNext, scrollTo, canSubmit, isSubmitting, submissionError, handleSubmit } = registration;
   const [showErrors, setShowErrors] = useState(false);
@@ -112,4 +140,8 @@ export default function RegisterPage() {
       <p className="registration-page-footer"><span>ENSIA SPORT & CULTURE CLUB</span></p>
     </main>
   );
+}
+
+export default function RegisterPage() {
+  return REGISTRATION_OPEN ? <RegistrationForm /> : <RegistrationClosed />;
 }
